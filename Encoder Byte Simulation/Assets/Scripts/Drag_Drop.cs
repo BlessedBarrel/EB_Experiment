@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Drag_Drop : MonoBehaviour
 {
+    GameManager gm;
+    public void initial(GameManager game)
+    {
+        gm=game;
+    }
     /*Item pos is (2,3,10) --> world to screen point (200,300 100)pixels
     then we find offset, where we click mouse inside object position is (220,320,120)pixels and object pos is (200,300,100)
     minus then we get (20,20,20). Now in last drag function, we take the mouse pos every frame as obj gets dragged and - it from the offset
@@ -25,4 +30,16 @@ public class Drag_Drop : MonoBehaviour
    // Debug.Log(Input.mousePosition + "mousePosition");
    // Debug.Log(Input.mousePosition - mousePosition + "Not converted");
    // Debug.Log(transform.position + "final") ;}
-} } 
+}
+private void OnMouseEnter() {
+    Debug.Log("Inside mouse enter");
+    if (gm)
+    Debug.Log("Inside if gm on mouse enter");
+    Cursor.SetCursor(gm.handCursor, gm.cursorOffset,gm.cursorMode);
+    }
+private void OnMouseExit() {
+    if (gm)
+     Cursor.SetCursor(null, Vector2.zero, gm.cursorMode);
+}
+
+ }

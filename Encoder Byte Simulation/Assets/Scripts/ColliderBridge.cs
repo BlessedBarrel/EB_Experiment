@@ -11,7 +11,7 @@ public class ColliderBridge : MonoBehaviour
     }
     void OnTriggerEnter(Collider other) // When triggered so Call Simluation Managers OnTriggerEnter
     {
-        Debug.Log("hi");
+        Debug.Log("Collided with " + other.gameObject.name);
         GM.OnTriggerEnteer(other);
     }
 
